@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>tuling</title>
+</head>
+<script src="jquery-1.7.2.min.js"></script>
+<script>
+	window.onload=function(){
+		
+		var content=document.getElementById('content');
+		var send=document.getElementById('send');
+		var text=document.getElementById('text');
+		
+		function test(content){
+        	$.ajax({
+            	url:'http://www.tuling123.com/openapi/api',
+				data:{key:"14cdf0b9a5d44e8ca0d07dab6de888c9",info:content},
+				type:'get',
+				success:function(response){
+					text.innerHTML=response.text;
+				}
+        	});
+    	}
+		
+		send.onclick=function(){
+			var hua=content.value;
+			test(hua);
+		}
+		
+	}
+</script>
+<style>
+body{width: 500px;margin: 200px auto;}
+#content{width: 280px;height:22px;margin-bottom: 10px;padding: 5px;box-sizing;}
+#text{width: 300px;padding: 20px;border: 1px solid #ccc;}
+</style>
+
+<body>
+<input type="text" id="content" placeholder="你要对小西瓜说什么呢？">
+<button id="send">发送</button>
+<div id="text"></div>
+</body>
+</html>

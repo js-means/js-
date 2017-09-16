@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>zepto动画</title>
+<script src="zepto.min.js"></script>
+<script src="touch.js"></script>
+
+<script>
+$(function(){	
+
+	$(".box").swipeLeft(function(){
+		$(this).css({"margin-left":"50px","transition":"1s","background":"red","border-radius":"20px"});
+	});
+
+	$(".box").swipeRight(function(){
+		$(this).css({"margin-left":"250px","transition":"1s","background":"blue","border-radius":"20px"});
+	});
+	
+	$(".box").swipeUp(function(){
+		$(this).css({"margin-top":"50px","transition":"1s","background":"yellow","border-radius":"20px"});
+	});
+	
+	$(".box").swipeDown(function(){
+		$(this).css({"margin-top":"250px","transition":"1s","background":"lime","border-radius":"20px"});
+	});
+
+})
+</script>
+<style>
+
+.box{width: 50px; height: 50px; background:deeppink; margin-top: 150px; margin-left: 150px;}
+
+</style>
+</head>
+
+<body>
+
+<div class="box"></div>
+
+</body>
+</html>

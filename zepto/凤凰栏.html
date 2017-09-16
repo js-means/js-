@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>凤凰 TAB 栏</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<script src="zepto.min.js"></script>
+<script src="touch.js"></script>
+<style>
+*{padding:0;margin:0;border:0;list-style:none;}
+body{font-size: 16px;}
+a{text-decoration: none; color:#333;}
+
+.box{width: 100%;overflow: hidden;}
+.head{height: 40px;background: #ccc;position: relative;}
+.head li{width: 50%;height: 38px;line-height: 38px;text-align: center;float: left;}
+.head .current{font-weight: bold;color:darkred;}
+.head .bdr{border-right: 1px solid #eee; box-sizing:border-box;}
+.head span{ height: 2px; background:darkred; position:absolute; left: 0; bottom:0;width: 50%;}
+
+.down{width: 200%; overflow: hidden;}
+.down div{width: 50%;float: left;}
+.down ul{padding:0 8px;}
+.down li{line-height: 40px; border-bottom: 1px solid #000;}
+.down p{line-height: 40px; text-align: center;}
+</style>
+<script>
+$(function(){	
+	
+	$('.head li').tap(function(){	
+		
+		//
+		$(this).addClass('current').siblings().removeClass('current');
+		
+		//
+		var num = $(this).index();
+		
+		var numbdr = num * 100+'%';
+		
+		$('.head span').css({'transform':'translate('+numbdr+')','transition':'0.2s'});
+		
+		var downnum = - num * 100+'%';
+		$('.down ul').css({'transform':'translate('+downnum+')','transition':'0.2s'})
+		
+	});
+	
+	$('.down div').swipeLeft(function(){	
+		var num = $(this).index();
+		num++
+		
+		if(num<$('.down div').length){
+			var divnum = -num*50+'%';
+			$('.down').css({"transform":"translateX("+divnum+")","transition":".2s"});
+			
+			$('.head li').eq(num).addClass('current').siblings().removeClass('current');
+			
+			var spannum = num*100+'%';
+			$('.head span').css({"transform":"translateX("+spannum+")","transition":".2s"});
+			
+		};
+		
+		//
+		
+	})
+	
+	$('.down div').swipeRight(function(){	
+		var num = $(this).index();
+		num--
+		
+		if(num>-1){
+			var divnum = -num*50+'%';
+			$('.down').css({"transform":"translateX("+divnum+")","transition":".2s"});
+			
+			$('.head li').eq(num).addClass('current').siblings().removeClass('current');
+			
+			var spannum = num*100+'%';
+			$('.head span').css({"transform":"translateX("+spannum+")","transition":".2s"});
+			
+		};
+		
+		//
+		
+	})
+	
+})
+</script>
+
+</head>
+
+<body>
+<div class="box">
+	<div class="head">
+    	<ul>
+    		<li class="current bdr">新闻</li>
+    		<li>科技</li>
+    	</ul>
+        <span></span>
+    </div>
+	<div class="down">
+        <div>
+            <ul>
+                <li><a href="#">这是新闻相关</a></li>
+                <li><a href="#">这是新闻相关</a></li>
+                <li><a href="#">这是新闻相关</a></li>
+                <li><a href="#">这是新闻相关</a></li>
+            </ul>
+            <p><a href="#">查看更多......</a></p>
+        </div>
+        <div>
+            <ul>
+                <li><a href="#">这是科技相关</a></li>
+            </ul>
+            <p><a href="#">查看更多......</a></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

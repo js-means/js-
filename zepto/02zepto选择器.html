@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>zepto选择器</title>
+<script src="zepto.min.js"></script>
+<script src="selector.js"></script>
+<script>
+$(function(){	
+
+	$("button").click(function(){
+		$(".box:eq(1)").css("background","#ccc");
+	});
+
+})
+</script>
+<style>
+
+.box{width: 200px; height: 200px; background:deeppink;}
+
+</style>
+</head>
+
+<body>
+<button>点我</button>
+<br>
+<br>
+<div class="box"></div>
+<br>
+<br>
+<div class="box"></div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>体验</title>
+<link rel="stylesheet" href="css/swiper-3.4.0.min.css">
+<link rel="stylesheet" href="css/animate.min.css">
+<script src="js/swiper-3.4.0.min.js"></script>
+<script src="js/swiper.animate1.0.2.min.js"></script>
+<script>
+window.onload = function(){
+	
+	var swiper = new Swiper('.swiper-container',{
+		
+			 // 如果需要分页器
+			pagination: '.swiper-pagination',
+	
+			
+			loop: true,
+			direction: 'vertical',	
+			autoplay: 2000,	
+			paginationClickable: true,
+			keyboardControl:true,		
+			mousewheelControl: true,
+			
+			
+			  onInit: function(swiper){               //Swiper2.x的初始化是onFirstInit
+				swiperAnimateCache(swiper);           //隐藏动画元素
+				swiperAnimate(swiper);                //初始化完成开始动画
+			  },
+			  onSlideChangeEnd: function(swiper){
+				swiperAnimate(swiper);                //每个slide切换结束时也运行当前slide动画
+			  }
+		 	
+		});
+		
+		var obox = document.getElementById("obox");
+		
+		obox.onmouseover = function(){
+			swiper.stopAutoplay();
+		}
+		obox.onmouseout = function(){
+			swiper.startAutoplay();
+		}
+		
+		var musicbox = document.getElementById("musicbox");
+		var oaudio = document.getElementsByTagName("audio");
+		
+		musicbox.onclick = function(){
+			
+			if(oaudio[0].paused == true){
+				
+				oaudio[0].play();
+				musicbox.style.animation = "circle 4s infinite linear running"
+				
+			}else{
+				
+				oaudio[0].pause();
+				musicbox.style.animation = "circle 4s infinite linear paused"
+				
+			}
+			
+		}
+		
+		
+
+}
+
+</script>
+<style>
+*{margin:0;padding:0;border:0;list-style:none;}
+html,body{ height:100%;}
+.swiper-container{width:100%; height:100%; background:pink; position:relative;}
+.swiper-pagination-bullet-active{background:#f10180;}
+.swiper-container-vertical>.swiper-pagination-bullets .swiper-pagination-bullet{margin:20px;}
+.swiper-pagination-bullet{width: 18px; height: 18px;}
+.ani{width: 200px; height: 200px; background:blue; position:absolute; margin-left: -100px; margin-top: -100px; left: 50%; top: 50%; border-radius:50%; line-height: 200px; text-align: center; color:#fff; font-size: 50px; font-weight: bold;}
+.music{width: 50px; height: 50px; position:fixed; right: 50px; top: 50px; z-index:9; background:url(mp3/music.png) no-repeat left top; animation:circle 4s infinite linear running; cursor:pointer;}
+@keyframes circle{
+	0%{transform:rotate(0);}
+	100%{transform:rotate(360deg);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="music" id="musicbox">
+	<audio src="mp3/jay.mp3" loop autoplay></audio>
+</div>
+
+<div class="swiper-container" id="obox">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+        	<p class="ani" swiper-animate-effect="bounceInRight">Slide 1</p>
+        </div>
+        <div class="swiper-slide"><p class="ani" swiper-animate-effect="zoomIn" swiper-animate-delay="0.1s">Slide 2</p></div>
+        <div class="swiper-slide"><p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="3s">Slide 3</p></div>
+    </div>
+    <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
+
+
+</div>
+
+
+
+</body>
+</html>

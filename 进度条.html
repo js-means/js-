@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .bardown{
+      margin:100px;
+      width: 500px;
+      height: 5px;
+      background: #ccc;
+      position: relative;
+    }
+    .bardot{
+      width: 10px;
+      height: 20px;
+      background: #369;
+      position: absolute;
+      top: -7px;
+      left: 0;
+      cursor: pointer;
+    }
+    .barup{
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: #369;
+      width: 0;
+      height: 5px;
+    }
+  </style>  
+</head>
+<body>
+  <div class="bardown" id="bardown">
+    <div class="bardot" id="bardot">
+ 
+    </div>
+    <div class="barup" id="barup"></div>
+  </div>
+  <p></p>
+  <script>  
+    var bardown = document.getElementById('bardown');
+    var bardot = document.getElementById('bardot');
+    var barup = document.getElementById('barup');
+    var ptxt = document.getElementsByTagName('p')[0];
+    var bardotleft = 0;
+    bardot.onmousedown = function(event){
+      var event = event || window.event;
+      var leftVal = event.clientX - this.offsetLeft;
+      var that = this;
+       // 拖动一定写到 down 里面才可以
+      document.onmousemove = function(event){
+        var event = event || window.event;
+        bardotleft = event.clientX - leftVal;     
+        if(bardotleft < 0)
+          bardotleft = 0;
+        else if(bardotleft > bardown.offsetWidth - bardot.offsetWidth)
+          bardotleft = bardown.offsetWidth - bardot.offsetWidth;
+        barup.style.width = bardotleft +'px' ;
+        that.style.left = bardotleft + "px";
+        ptxt.innerHTML = "已经走了" + parseInt(bardotleft/(bardown.offsetWidth-bardot.offsetWidth) * 100) + "%";
+ 
+        //防止选择内容--当拖动鼠标过快时候，弹起鼠标，bardot也会移动，修复bug
+        window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+      }
+ 
+    }
+    document.onmouseup = function(){
+      document.onmousemove = null; //弹起鼠标不做任何操作
+    }
+  </script>
+</body>
+</html> 

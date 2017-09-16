@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="js/html5shiv.min.js"></script>
+    	<script src="js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+    	body{margin-top: 50px;margin-bottom: 50px;}
+    </style>
+    <script>
+   	window.onload=function(){
+		var btn1=document.getElementById('btn1');
+		var ceshi=document.getElementById('ceshi');
+		btn1.onclick=function(){
+			ceshi.style.width="80%";	
+		};
+		ceshi.innerHTML=ceshi.style.width;
+	};
+    </script>
+  </head>
+  <body>
+   <div class="container">
+   	   <div class="progress">
+ 		 <div class="progress-bar" id="ceshi"></div>
+ 	   </div>
+       <button class="btn btn-success" id="btn1"></button>
+       
+        <div class="panel panel-default">
+        <div class="panel-heading">描写花的诗句</div>
+        <div class="panel-body">
+            <p>诗人对菊花由衷喜爱：开得正旺的菊花一簇簇、一丛丛，遍布屋舍四周，他沿着竹篱，忘情地欣赏这些亲手栽种的秋菊，不觉日已西斜。</p>
+
+        </div>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>《岳阳楼记》</th>
+                <th>《上邪》</th>
+                <th>《题都城南庄》</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>先天下之忧而忧，后天下之乐而乐</td>
+                <td>我欲与君相知，长命无绝衰</td>
+                <td>人面不知何处去，桃花依旧笑春风</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="panel-footer">这首诗取陶诗的意境，且也以淡雅朴素的语言吟咏，便不似陶公全用意象，蕴藉之至；而是在描绘具象之后，以自述的方式道出爱菊之由而又不一语说尽，留下了想象空间让人们去回味咀嚼，这就增强了它的艺术感染力。因而历来被人们所喜爱</div>
+    </div>
+     <!--navbar-default导航条勋章-->
+ 
+ <div class="navbar navbar-default" role="navigation">
+ 
+   　<div class="navbar-header">
+ 
+   　    <a href="##" class="navbar-brand">慕课网</a>
+ 
+   　</div>
+ 
+        <ul class="nav navbar-nav">
+ 
+              <li class="active"><a href="##">网站首页</a></li>
+ 
+         <li><a href="##">系列教程</a></li>
+ 
+         <li><a href="##">名师介绍</a></li>
+ 
+         <li><a href="##">成功案例<span class="badge">23</span></a></li>
+ 
+         <li><a href="##">关于我们</a></li>
+ 
+        </ul>
+ 
+ </div>
+ 
+ <!--nav-pills导航条勋章-->
+ 
+ <ul class="nav nav-pills">
+ 
+   <li class="active"><a href="#">Home <span class="badge">42</span></a></li>
+ 
+   <li><a href="#">Profile<span class="badge">88</span></a></li>
+ 
+   <li><a href="#">Messages <span class="badge">3</span></a></li>
+ 
+ </ul>
+ 
+ <br />
+ 
+ <ul class="nav nav-pills nav-stacked" style="max-width: 260px;">
+ 
+       <li class="active">
+ 
+         <a href="#">
+ 
+           <span class="badge pull-right">42</span>
+ 
+           Home
+ 
+         </a>
+ 
+       </li>
+ 
+       <li><a href="#">Profile</a></li>
+ 
+       <li>
+ 
+         <a href="#">
+ 
+           <span class="badge pull-right">3</span>
+ 
+           Messages
+ 
+         </a>
+ 
+       </li>
+ 
+ </ul>
+ 
+ <br />
+ 
+ <!--按钮勋章-->
+ 
+ <button class="btn btn-primary" type="button">
+ 
+       Messages <span class="badge">4</span>
+ 
+ </button>
+ 
+  <div class="progress progress-striped active">
+ 
+     <div class="progress-bar progress-bar-success" style="width:40%"></div>
+ 
+ </div>
+ 
+  <div class="media">
+ 
+     <a class="pull-left" href="#">
+ 
+               <img class="media-object" src="http://a.disquscdn.com/uploads/users/3740/2069/avatar92.jpg?1406972031" alt="...">
+ 
+        </a>
+ 
+        <div class="media-body">
+ 
+               <h4 class="media-heading">我是大漠</h4>
+ 
+               <div>我是W3cplus站长大漠，我在写Bootstrap框中的媒体对象测试用例</div>
+ 
+               <div class="media">
+ 
+                      <a class="pull-left" href="#">
+ 
+                             <img class="media-object" src="http://tp2.sinaimg.cn/3306361973/50/22875318196/0" alt="...">
+ 
+                      </a>
+ 
+                      <div class="media-body">
+ 
+                             <h4 class="media-heading">慕课网</h4>
+ 
+                             <div>大漠写的《玩转Bootstrap》系列教程即将会在慕课网上发布</div>
+ 
+                             <div class="media">
+ 
+                                    <a class="pull-left" href="#">
+ 
+                                           <img class="media-object" src="http://tp4.sinaimg.cn/1167075935/50/22838101204/1" alt="...">
+ 
+                                    </a>
+ 
+                                    <div class="media-body">
+ 
+                                           <h4 class="media-heading">W3cplus</h4>
+ 
+                                           <div>W3cplus站上还有很多教程....</div>
+ 
+                                    </div>
+ 
+                             </div>
+ 
+                      </div>
+ 
+               </div>
+ 
+        </div>
+ 
+ </div>
+   </div>
+   
+  
+   
+   
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<script src="zepto.min.js"></script>
+<script src="touch.js"></script>
+
+<title>凤凰网tab栏</title>
+<style>
+*{margin:0;padding:0;border:0;list-style:none;}
+body{font-size: 16px;}
+a{text-decoration: none; color:#333;}
+.tab{width: 100%; overflow: hidden;}
+.tab .head{height: 40px; background:#ccc; position:relative;}
+.tab .head li{width:33.33%; height: 38px; line-height: 38px; text-align: center; float: left; font-weight: bold;}
+.tab .current{color:darkred;}
+.line{width: 33.33%; height: 2px; background:darkred; position:absolute; left: 0; bottom:0;}
+.tab .bdr{border-right:1px solid #eee; box-sizing:border-box;}
+.lists{width: 300%;}
+.lists div{width: 33.33%; float:left;}
+.lists ul{padding:0 8px;}
+.lists li{line-height: 40px; border-bottom: 1px solid #000;}
+.lists p{line-height: 40px; text-align: center;}
+</style>
+
+
+<script>
+$(function(){	
+
+	$(".head li").tap(function(){
+		
+		//文字颜色变化
+		$(this).addClass("current").siblings().removeClass("current");
+		
+		//获取索引值
+		var num = $(this).index();
+		
+		//根据索引值计红线算移动的数值
+		var linenum = num*100+"%";
+		
+		//红线位移
+		$(".head .line").css({"transform":"translateX("+linenum+")","transition":".3s"});
+		
+		//根据索引值计算lists移动数值
+		var listsnum = -num*33.33+"%";
+		
+		//lists位移
+		$(".lists").css({"transform":"translateX("+listsnum+")","transition":".3s"});
+		
+		
+	});
+	
+	$(".lists div").swipeLeft(function(){
+		
+		var num = $(this).index();
+		
+		num++;
+		
+		if(num<$(".lists div").length){
+			
+			//lists移动的数值
+			var listsnum=-num*33.33+"%";
+			
+			//lists移动
+			$(".lists").css({"transform":"translateX("+listsnum+")","transition":".3s"});
+			
+			//文字颜色改变
+			 
+			$(".head li").eq(num).addClass("current").siblings().removeClass("current");
+			
+			//line移动的数值
+			var linenum = num*100+"%";
+			
+			//line移动
+			$(".head .line").css({"transform":"translateX("+linenum+")","transition":".3s"});
+						
+		}
+		
+	});
+	
+	$(".lists div").swipeRight(function(){
+		
+		var num = $(this).index();
+		
+		num--;
+		
+		if(num>-1){
+			
+			//lists移动的数值
+			var listsnum=-num*33.33+"%";
+			
+			//lists移动
+			$(".lists").css({"transform":"translateX("+listsnum+")","transition":".3s"});
+			
+			//文字颜色改变
+			 
+			$(".head li").eq(num).addClass("current").siblings().removeClass("current");
+			
+			//line移动的数值
+			var linenum = num*100+"%";
+			
+			//line移动
+			$(".head .line").css({"transform":"translateX("+linenum+")","transition":".3s"});
+						
+		}
+		
+	});
+
+	
+
+})
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div class="tab">
+
+	<div class="head">
+    	<ul>
+    		<li class="current bdr">新闻</li>
+    		<li class="bdr">科技</li>
+    		<li>娱乐</li>
+    	</ul>
+        <span class="line"></span>
+    </div>
+    
+    <div class="lists">
+    	<div>
+        	<ul>
+        		<li><a href="#">这是新闻相关的</a></li>
+        		<li><a href="#">这是新闻相关的</a></li>
+        		<li><a href="#">这是新闻相关的</a></li>
+        		<li><a href="#">这是新闻相关的</a></li>
+        		<li><a href="#">这是新闻相关的</a></li>
+        	</ul>
+            <p><a href="#">查看更多……</a></p>
+        </div>
+    	<div>
+        	<ul>
+        		<li><a href="#">这是科技相关的</a></li>
+        		<li><a href="#">这是科技相关的</a></li>
+        		<li><a href="#">这是科技相关的</a></li>
+        		<li><a href="#">这是科技相关的</a></li>
+        		<li><a href="#">这是科技相关的</a></li>
+        	</ul>
+            <p><a href="#">查看更多……</a></p>
+        </div>
+    	<div>
+        	<ul>
+        		<li><a href="#">这娱乐相关的</a></li>
+        		<li><a href="#">这娱乐相关的</a></li>
+        		<li><a href="#">这娱乐相关的</a></li>
+        		<li><a href="#">这娱乐相关的</a></li>
+        		<li><a href="#">这娱乐相关的</a></li>
+        		<li><a href="#">这娱乐相关的</a></li>
+        	</ul>
+            <p><a href="#">查看更多……</a></p>
+        </div>
+    </div>
+    
+</div>
+
+</body>
+</html>
